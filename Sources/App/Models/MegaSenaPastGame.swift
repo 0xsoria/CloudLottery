@@ -19,7 +19,7 @@ final class MegaSenaPastGame: Codable {
     var dezena_cinco: Int
     var dezena_seis: Int
     var all_numbers: [Int]
-    var arrecadacao_total: Int
+    var arrecadacao_total: String
     var ganhadores_sena: Int
     var cidade: String
     var uf: String
@@ -30,7 +30,7 @@ final class MegaSenaPastGame: Codable {
     var rateio_quadra: String
     var acumulado: String
     var valor_acumulado: String
-    var estimativa_premio: Int
+    var estimativa_premio: String
     var acumulado_mega_da_virada: String
     var allNumbersString: String {
         get {
@@ -50,7 +50,7 @@ final class MegaSenaPastGame: Codable {
         }
     }
     
-    init(id: Int, numberOfTheGame: Int, data_sorteio: String, dezena_um: Int, dezena_dois: Int, dezena_tres: Int, dezena_quatro: Int, dezena_cinco: Int, dezena_seis: Int, all_numbers: [Int], arrecadacao_total: Int, ganhadores_sena: Int, cidade: String, uf: String, rateio_sena: String, ganhadores_quina: Int, rateio_quina: String, ganhadores_quadra: Int, rateio_quadra: String, acumulado: String, valor_acumulado: String, estimativa_premio: Int, acumulado_mega_da_virada: String) {
+    init(id: Int, numberOfTheGame: Int, data_sorteio: String, dezena_um: Int, dezena_dois: Int, dezena_tres: Int, dezena_quatro: Int, dezena_cinco: Int, dezena_seis: Int, all_numbers: [Int], arrecadacao_total: String, ganhadores_sena: Int, cidade: String, uf: String, rateio_sena: String, ganhadores_quina: Int, rateio_quina: String, ganhadores_quadra: Int, rateio_quadra: String, acumulado: String, valor_acumulado: String, estimativa_premio: String, acumulado_mega_da_virada: String) {
         self.id = id
         self.numberOfTheGame = numberOfTheGame
         self.data_sorteio = data_sorteio
