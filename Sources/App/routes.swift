@@ -13,22 +13,22 @@ public func routes(_ router: Router) throws {
         return "Hello, world!"
     }
     
-    router.post("api", "megasena") { req -> Future<MegaSenaPastGame> in
-        return try req.content.decode(MegaSenaPastGame.self)
-            .flatMap(to: MegaSenaPastGame.self) { game in
+    router.post("api", "sena") { req -> Future<MegaSena> in
+        return try req.content.decode(MegaSena.self)
+            .flatMap(to: MegaSena.self) { game in
                 return game.save(on: req)
         }
     }
     
-    router.get("api", "megasena") { req -> Future<[MegaSenaPastGame]> in
-        return MegaSenaPastGame.query(on: req).all()
+    router.get("api", "sena") { req -> Future<[MegaSena]> in
+        return MegaSena.query(on: req).all()
     }
     
-    router.get("api", "megasena", MegaSenaPastGame.parameter) { req -> Future<MegaSenaPastGame> in
-        return try req.parameters.next(MegaSenaPastGame.self)
+    router.get("api", "sena", MegaSena.parameter) { req -> Future<MegaSena> in
+        return try req.parameters.next(MegaSena.self)
     }
-    router.put("api", "megasena", MegaSenaPastGame.parameter) { req -> Future<MegaSenaPastGame> in
-        return try flatMap(to: MegaSenaPastGame.self, req.parameters.next(MegaSenaPastGame.self), req.content.decode(MegaSenaPastGame.self)) {
+    router.put("api", "sena", MegaSena.parameter) { req -> Future<MegaSena> in
+        return try flatMap(to: MegaSena.self, req.parameters.next(MegaSena.self), req.content.decode(MegaSena.self)) {
             game, updateGame in
             
             //game.numberOfTheGame = updateGame.numberOfTheGame
@@ -58,21 +58,21 @@ public func routes(_ router: Router) throws {
         }
     }
     
-    router.delete("api", "megasena", MegaSenaPastGame.parameter) { req -> Future<HTTPStatus> in
-        return try req.parameters.next(MegaSenaPastGame.self)
+    router.delete("api", "sena", MegaSena.parameter) { req -> Future<HTTPStatus> in
+        return try req.parameters.next(MegaSena.self)
                     .delete(on: req)
                     .transform(to: HTTPStatus.noContent)
     }
     
-    router.get("api", "megasena", "search") { req -> Future<[MegaSenaPastGame]> in
+    router.get("api", "sena", "search") { req -> Future<[MegaSena]> in
         guard let searchTerm = req.query[String.self, at: "term"] else {
             throw Abort(.badRequest)
         }
-        return MegaSenaPastGame.query(on: req).filter(\.allNumbersString == searchTerm).all()
+        return MegaSena.query(on: req).filter(\.allNumbersString == searchTerm).all()
     }
     
-    router.get("api", "megasena", "first") { req -> Future<MegaSenaPastGame> in
-        return MegaSenaPastGame.query(on: req).first().map(to: MegaSenaPastGame.self) { game in
+    router.get("api", "sena", "first") { req -> Future<MegaSena> in
+        return MegaSena.query(on: req).first().map(to: MegaSena.self) { game in
             guard let game = game else {
                 throw Abort(.notFound)
             }
@@ -80,8 +80,8 @@ public func routes(_ router: Router) throws {
         }
     }
     
-    router.get("api", "megasena", "sorted") { req -> Future<[MegaSenaPastGame]> in
-        return MegaSenaPastGame.query(on: req).sort(\.data_sorteio, .ascending).all()
+    router.get("api", "sena", "sorted") { req -> Future<[MegaSena]> in
+        return MegaSena.query(on: req).sort(\.data_sorteio, .ascending).all()
     }
     
     

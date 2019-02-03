@@ -8,7 +8,7 @@
 import Vapor
 import FluentPostgreSQL
 
-final class MegaSenaPastGame: Codable {
+final class MegaSena: Codable {
     var id: Int?
     var numberOfTheGame: Int
     var data_sorteio: String
@@ -77,7 +77,7 @@ final class MegaSenaPastGame: Codable {
     }
 }
 
-extension MegaSenaPastGame: PostgreSQLModel {}
-extension MegaSenaPastGame: Migration {}
-extension MegaSenaPastGame: Content {}
-extension MegaSenaPastGame: Parameter {}
+extension MegaSena: PostgreSQLModel {}
+extension MegaSena: Migration {}
+extension MegaSena: Content {}
+extension MegaSena: Parameter {}
