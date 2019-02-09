@@ -35,7 +35,12 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     migrations.add(model: MegaSena.self, database: .psql)
     services.register(migrations)
     
-    //var migrations = MigrationConfig()
     migrations.add(model: MegaSenaStatistics.self, database: .psql)
+    services.register(migrations)
+    
+    migrations.add(model: QuinaStatistics.self, database: .psql)
+    services.register(migrations)
+    
+    migrations.add(model: LotoFacilStatistics.self, database: .psql)
     services.register(migrations)
 }
