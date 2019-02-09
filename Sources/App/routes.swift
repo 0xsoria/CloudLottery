@@ -31,7 +31,7 @@ public func routes(_ router: Router) throws {
         return try flatMap(to: MegaSena.self, req.parameters.next(MegaSena.self), req.content.decode(MegaSena.self)) {
             game, updateGame in
             
-            //game.numberOfTheGame = updateGame.numberOfTheGame
+            game.numberOfTheGame = updateGame.numberOfTheGame
             game.data_sorteio = updateGame.data_sorteio
             game.dezena_um = updateGame.dezena_um
             game.dezena_dois = updateGame.dezena_dois
@@ -83,6 +83,33 @@ public func routes(_ router: Router) throws {
     router.get("api", "sena", "sorted") { req -> Future<[MegaSena]> in
         return MegaSena.query(on: req).sort(\.data_sorteio, .ascending).all()
     }
+    
+    router.post("api", "estatisticas", "megasena") { req -> Future<MegaSenaStatistics> in
+        return try req.content.decode(MegaSenaStatistics.self)
+            .flatMap(to: MegaSenaStatistics.self) { stats in
+                return stats.save(on: req)
+        }
+    }
+    
+    router.get("api", "estatisticas", "megasena") { req -> Future<[MegaSenaStatistics]> in
+        return MegaSenaStatistics.query(on: req).all()
+    }
+    
+    
+    
+    router.put("api", "estatisticas", "megasena", MegaSenaStatistics.parameter) { req -> Future<MegaSenaStatistics> in
+        return try flatMap(to: MegaSenaStatistics.self, req.parameters.next(MegaSenaStatistics.self), req.content.decode(MegaSenaStatistics.self)) { game, updateGame in
+            game.one = updateGame.one
+            //to be done
+            return game.save(on: req)
+            
+        }
+    }
+    
+    router.delete("api", "estatisticas", "megasena", MegaSenaStatistics.parameter) { req -> Future<HTTPStatus> in
+        return try req.parameters.next(MegaSenaStatistics.self).delete(on: req).transform(to: HTTPStatus.noContent)
+    }
+    
     
     
 }
