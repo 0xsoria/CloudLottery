@@ -14,7 +14,8 @@ struct MegaSenaController: RouteCollection {
         
         let megaSenaRouter = router.grouped("api", "sena")
         megaSenaRouter.get(use: getAllHandler)
-        megaSenaRouter.post([MegaSena].self, use: createHandler)
+        megaSenaRouter.post([MegaSena].self, use: createManyHandlers)
+        megaSenaRouter.post(MegaSena.self, use: createOneHandler)
         megaSenaRouter.get(MegaSena.parameter, use: getHandler)
         megaSenaRouter.put(MegaSena.parameter, use: updateHandler)
         megaSenaRouter.delete(MegaSena.parameter, use: deleteHandler)
@@ -23,13 +24,17 @@ struct MegaSenaController: RouteCollection {
         megaSenaRouter.get("sorted", use: sortedHandler)
     }
     
-    func createHandler(_ req: Request, games: [MegaSena]) throws -> Future<HTTPStatus> {
+    func createManyHandlers(_ req: Request, games: [MegaSena]) throws -> Future<HTTPStatus> {
         var arr: [EventLoopFuture<MegaSena>] = []
         
         for i in games {
             arr.append(i.save(on: req))
         }
         return arr.flatten(on: req).transform(to: .created)
+    }
+    
+    func createOneHandler(_ req: Request, game: MegaSena) throws -> Future<MegaSena> {
+        return game.save(on: req)
     }
 
     

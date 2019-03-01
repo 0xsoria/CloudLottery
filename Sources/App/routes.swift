@@ -15,6 +15,9 @@ public func routes(_ router: Router) throws {
     
     let megaSenaController = MegaSenaController()
     try router.register(collection: megaSenaController)
+    let quinaController = QuinaController()
+    try router.register(collection: quinaController)
+    
     
     router.post("api", "estatisticas", "megasena") { req -> Future<MegaSenaStatistics> in
         return try req.content.decode(MegaSenaStatistics.self)

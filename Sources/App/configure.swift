@@ -35,6 +35,9 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     migrations.add(model: MegaSena.self, database: .psql)
     services.register(migrations)
     
+    migrations.add(model: Quina.self, database: .psql)
+    services.register(migrations)
+    
     migrations.add(model: MegaSenaStatistics.self, database: .psql)
     services.register(migrations)
     
