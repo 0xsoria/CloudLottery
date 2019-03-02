@@ -1,131 +1,83 @@
+//
+//  MegaSenaPastGame.swift
+//  App
+//
+//  Created by Gabriel Soria Souza on 02/02/19.
+//
+
 import Vapor
+import FluentPostgreSQL
 
+final class MegaSena: Codable {
+    var id: Int?
+    var numberOfTheGame: Int
+    var data_sorteio: String
+    var dezena_um: Int
+    var dezena_dois: Int
+    var dezena_tres: Int
+    var dezena_quatro: Int
+    var dezena_cinco: Int
+    var dezena_seis: Int
+    var all_numbers: [Int]
+    var arrecadacao_total: String
+    var ganhadores_sena: Int
+    var cidade: String
+    var uf: String
+    var rateio_sena: String
+    var ganhadores_quina: Int
+    var rateio_quina: String
+    var ganhadores_quadra: Int
+    var rateio_quadra: String
+    var acumulado: String
+    var valor_acumulado: String
+    var estimativa_premio: String
+    var acumulado_mega_da_virada: String
+    var allNumbersString: String {
+        get {
+            let sortedNumbers = all_numbers.sorted()
+            var stringAllNumbers = String()
+            for i in sortedNumbers {
+                if stringAllNumbers.isEmpty {
+                    stringAllNumbers.append(String(i))
+                } else {
+                    stringAllNumbers.append("-\(i)")
+                }
+            }
+            return stringAllNumbers
+        }
+        set {
+            print(newValue)
+        }
+    }
+    
+    init(id: Int, numberOfTheGame: Int, data_sorteio: String, dezena_um: Int, dezena_dois: Int, dezena_tres: Int, dezena_quatro: Int, dezena_cinco: Int, dezena_seis: Int, all_numbers: [Int], arrecadacao_total: String, ganhadores_sena: Int, cidade: String, uf: String, rateio_sena: String, ganhadores_quina: Int, rateio_quina: String, ganhadores_quadra: Int, rateio_quadra: String, acumulado: String, valor_acumulado: String, estimativa_premio: String, acumulado_mega_da_virada: String) {
+        self.id = id
+        self.numberOfTheGame = numberOfTheGame
+        self.data_sorteio = data_sorteio
+        self.dezena_um = dezena_um
+        self.dezena_dois = dezena_dois
+        self.dezena_tres = dezena_tres
+        self.dezena_quatro = dezena_quatro
+        self.dezena_cinco = dezena_cinco
+        self.dezena_seis = dezena_seis
+        self.all_numbers = all_numbers
+        self.arrecadacao_total = arrecadacao_total
+        self.ganhadores_sena = ganhadores_sena
+        self.cidade = cidade
+        self.uf = uf
+        self.rateio_sena = rateio_sena
+        self.ganhadores_quina = ganhadores_quina
+        self.rateio_quina = rateio_quina
+        self.ganhadores_quadra = ganhadores_quadra
+        self.rateio_quadra = rateio_quadra
+        self.acumulado = acumulado
+        self.valor_acumulado = valor_acumulado
+        self.estimativa_premio = estimativa_premio
+        self.acumulado_mega_da_virada = acumulado_mega_da_virada
+    }
+}
 
-
-//final class Lottery: Codable {
-//    var one: Int
-//    var two: Int
-//    var three: Int
-//    var four: Int
-//    var five: Int
-//    var six: Int
-//    var seven: Int
-//    var eight: Int
-//    var nine: Int
-//    var tem: Int
-//    var eleven: Int
-//    var twelve: Int
-//    var thirteen: Int
-//    var fourteen: Int
-//    var fifteen: Int
-//    var sixteen: Int
-//    var seventeen: Int
-//    var eighteen: Int
-//    var nineeen: Int
-//    var twenty: Int
-//    var twenty_one: Int
-//    var twenty_two: Int
-//    var twenty_three: Int
-//    var twenty_four: Int
-//    var twenty_five: Int
-//    var twenty_six: Int
-//    var twenty_seven: Int
-//    var twenty_eight: Int
-//    var twenty_nine: Int
-//    var thirdy: Int
-//    var thirdy_one: Int
-//    var thirdy_two: Int
-//    var thirdy_three: Int
-//    var thirdy_four: Int
-//    var thirdy_five: Int
-//    var thirdy_six: Int
-//    var thirdy_seven: Int
-//    var thirdy_eight: Int
-//    var thirdy_nine: Int
-//    var forty: Int
-//    var forty_one: Int
-//    var forty_two: Int
-//    var forty_three: Int
-//    var forty_four: Int
-//    var forty_five: Int
-//    var forty_six: Int
-//    var forty_seven: Int
-//    var forty_eight: Int
-//    var forty_nine: Int
-//    var fifty: Int
-//    var fifty_one: Int
-//    var fifty_two: Int
-//    var fifty_three: Int
-//    var fifty_four: Int
-//    var fifty_five: Int
-//    var fifty_six: Int
-//    var fifty_seven: Int
-//    var fifty_eight: Int
-//    var fifty_nine: Int
-//    var sixty: Int
-//    
-//    init(one: Int, two: Int, three: Int, four: Int, five: Int, six: Int, seven: Int, eight: Int, nine: Int, tem: Int, eleven: Int, twelve: Int, thirteen: Int, fourteen: Int, fifteen: Int, sixteen: Int, seventeen: Int, eighteen: Int, nineeen: Int, twenty: Int, twenty_one: Int, twenty_two: Int, twenty_three: Int, twenty_four: Int, twenty_five: Int, twenty_six: Int, twenty_seven: Int, twenty_eight: Int, twenty_nine: Int, thirdy: Int, thirdy_one: Int, thirdy_two: Int, thirdy_three: Int, thirdy_four: Int, thirdy_five: Int, thirdy_six: Int, thirdy_seven: Int, thirdy_eight: Int, thirdy_nine: Int, forty: Int, forty_one: Int, forty_two: Int, forty_three: Int, forty_four: Int, forty_five: Int, forty_six: Int, forty_seven: Int, forty_eight: Int, forty_nine: Int, fifty: Int, fifty_one: Int, fifty_two: Int, fifty_three: Int, fifty_four: Int, fifty_five: Int, fifty_six: Int, fifty_seven: Int, fifty_eight: Int, fifty_nine: Int, sixty: Int) {
-//        self.one = one
-//        self.two = two
-//        self.three = three
-//        self.four = four
-//        self.five = five
-//        self.six = six
-//        self.seven = seven
-//        self.eight = eight
-//        self.nine = nine
-//        self.tem = tem
-//        self.eleven = eleven
-//        self.twelve = twelve
-//        self.thirteen = thirteen
-//        self.fourteen = fourteen
-//        self.fifteen = fifteen
-//        self.sixteen = sixteen
-//        self.seventeen = seventeen
-//        self.eighteen = eighteen
-//        self.nineeen = nineeen
-//        self.twenty = twenty
-//        self.twenty_one = twenty_one
-//        self.twenty_two = twenty_two
-//        self.twenty_three = twenty_three
-//        self.twenty_four = twenty_four
-//        self.twenty_five = twenty_five
-//        self.twenty_six = twenty_six
-//        self.twenty_seven = twenty_seven
-//        self.twenty_eight = twenty_eight
-//        self.twenty_nine = twenty_nine
-//        self.thirdy = thirdy
-//        self.thirdy_one = thirdy_one
-//        self.thirdy_two = thirdy_two
-//        self.thirdy_three = thirdy_three
-//        self.thirdy_four = thirdy_four
-//        self.thirdy_five = thirdy_five
-//        self.thirdy_six = thirdy_six
-//        self.thirdy_seven = thirdy_seven
-//        self.thirdy_eight = thirdy_eight
-//        self.thirdy_nine = thirdy_nine
-//        self.forty = forty
-//        self.forty_one = forty_one
-//        self.forty_two = forty_two
-//        self.forty_three = forty_three
-//        self.forty_four = forty_four
-//        self.forty_five = forty_five
-//        self.forty_six = forty_six
-//        self.forty_seven = forty_seven
-//        self.forty_eight = forty_eight
-//        self.forty_nine = forty_nine
-//        self.fifty = fifty
-//        self.fifty_one = fifty_one
-//        self.fifty_two = fifty_two
-//        self.fifty_three = fifty_three
-//        self.fifty_four = fifty_four
-//        self.fifty_five = fifty_five
-//        self.fifty_six = fifty_six
-//        self.fifty_seven = fifty_seven
-//        self.fifty_eight = fifty_eight
-//        self.fifty_nine = fifty_nine
-//        self.sixty = sixty
-//    }
-//}
-
-
+extension MegaSena: PostgreSQLModel {}
+extension MegaSena: Migration {}
+extension MegaSena: Content {}
+extension MegaSena: Parameter {}

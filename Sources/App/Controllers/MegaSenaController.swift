@@ -47,6 +47,7 @@ struct MegaSenaController: RouteCollection {
             to: MegaSena.self,
         req.parameters.next(MegaSena.self),
         req.content.decode(MegaSena.self)) { game, updateGame in
+            
             game.numberOfTheGame = updateGame.numberOfTheGame
             game.data_sorteio = updateGame.data_sorteio
             game.dezena_um = updateGame.dezena_um
@@ -69,6 +70,7 @@ struct MegaSenaController: RouteCollection {
             game.estimativa_premio = updateGame.estimativa_premio
             game.acumulado_mega_da_virada = updateGame.acumulado_mega_da_virada
             game.allNumbersString = updateGame.allNumbersString
+            
             return game.save(on: req)
         }
     }

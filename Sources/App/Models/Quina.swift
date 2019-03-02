@@ -41,7 +41,7 @@ final class Quina: Codable {
                 if stringAllNumbers.isEmpty {
                     stringAllNumbers.append(String(i))
                 } else {
-                    stringAllNumbers.append(" \(i)")
+                    stringAllNumbers.append("-\(i)")
                 }
             }
             return stringAllNumbers

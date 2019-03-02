@@ -43,36 +43,33 @@ struct QuinaController: RouteCollection {
         return try req.parameters.next(Quina.self)
     }
     
-//    func updateHandler(_ req: Request) throws -> Future<Quina> {
-//        return try flatMap(
-//            to: Quina.self,
-//            req.parameters.next(Quina.self),
-//            req.content.decode(Quina.self)) { game, updateGame in
-//                game.numberOfTheGame = updateGame.numberOfTheGame
-//                game.data_sorteio = updateGame.data_sorteio
-//                game.dezena_um = updateGame.dezena_um
-//                game.dezena_dois = updateGame.dezena_dois
-//                game.dezena_tres = updateGame.dezena_tres
-//                game.dezena_quatro = updateGame.dezena_quatro
-//                game.dezena_cinco = updateGame.dezena_cinco
-//                game.dezena_seis = updateGame.dezena_seis
-//                game.all_numbers = updateGame.all_numbers
-//                game.arrecadacao_total = updateGame.arrecadacao_total
-//                game.ganhadores_sena = updateGame.ganhadores_sena
-//                game.cidade = updateGame.cidade
-//                game.uf = updateGame.uf
-//                game.rateio_sena = updateGame.rateio_sena
-//                game.ganhadores_quina = updateGame.ganhadores_quina
-//                game.rateio_quina = updateGame.rateio_quina
-//                game.ganhadores_quadra = updateGame.ganhadores_quadra
-//                game.acumulado = updateGame.acumulado
-//                game.valor_acumulado = updateGame.valor_acumulado
-//                game.estimativa_premio = updateGame.estimativa_premio
-//                game.acumulado_mega_da_virada = updateGame.acumulado_mega_da_virada
-//                game.allNumbersString = updateGame.allNumbersString
-//                return game.save(on: req)
-//        }
-//    }
+    func updateHandler(_ req: Request) throws -> Future<Quina> {
+        return try flatMap(
+            to: Quina.self,
+            req.parameters.next(Quina.self),
+            req.content.decode(Quina.self)) { game, updateGame in
+                game.numberOfTheGame = updateGame.numberOfTheGame
+                game.data_sorteio = updateGame.data_sorteio
+                game.dezena_um = updateGame.dezena_um
+                game.dezena_dois = updateGame.dezena_dois
+                game.dezena_tres = updateGame.dezena_tres
+                game.dezena_quatro = updateGame.dezena_quatro
+                game.dezena_cinco = updateGame.dezena_cinco
+                game.allNumbers = updateGame.allNumbers
+                game.arrecadacao_total = updateGame.arrecadacao_total
+                game.ganhadores_quina = updateGame.ganhadores_quina
+                game.cidade = updateGame.cidade
+                game.uf = updateGame.uf
+                game.rateio_quina = updateGame.rateio_quina
+                game.ganhadores_quadra = updateGame.ganhadores_quadra
+                game.acumulado = updateGame.acumulado
+                game.valor_acumulado = updateGame.valor_acumulado
+                game.estimativa_premio = updateGame.estimativa_premio
+                game.valor_acumulado_sorteio_especial_sao_joao = updateGame.valor_acumulado_sorteio_especial_sao_joao
+                game.allNumbersString = updateGame.allNumbersString
+                return game.save(on: req)
+        }
+    }
     
     func deleteHandler(_ req: Request) throws -> Future<HTTPStatus> {
         return try req.parameters.next(Quina.self).delete(on: req).transform(to: HTTPStatus.noContent)
