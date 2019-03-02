@@ -4,7 +4,7 @@ import Fluent
 struct MegaSenaStatisticsController: RouteCollection {
     func boot(router: Router) throws {
         
-        let senaStatisticsRouter = router.grouped("api", "estatisticas", "sena")
+        let senaStatisticsRouter = router.grouped("api", "estatisticas", "megasena")
         senaStatisticsRouter.get(use: getAllHandler)
         senaStatisticsRouter.post(MegaSenaStatistics.self, use: createOneHandler)
         //senaStatisticsRouter.delete(MegaSenaStatistics.parameter, use: deleteHandler)
