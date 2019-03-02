@@ -19,6 +19,7 @@ final class MegaSena: Codable {
     var dezena_cinco: Int
     var dezena_seis: Int
     var all_numbers: [Int]
+    var all_numbers_str: String
     var arrecadacao_total: String
     var ganhadores_sena: Int
     var cidade: String
@@ -32,25 +33,8 @@ final class MegaSena: Codable {
     var valor_acumulado: String
     var estimativa_premio: String
     var acumulado_mega_da_virada: String
-    var allNumbersString: String {
-        get {
-            let sortedNumbers = all_numbers.sorted()
-            var stringAllNumbers = String()
-            for i in sortedNumbers {
-                if stringAllNumbers.isEmpty {
-                    stringAllNumbers.append(String(i))
-                } else {
-                    stringAllNumbers.append("-\(i)")
-                }
-            }
-            return stringAllNumbers
-        }
-        set {
-            print(newValue)
-        }
-    }
     
-    init(id: Int, numberOfTheGame: Int, data_sorteio: String, dezena_um: Int, dezena_dois: Int, dezena_tres: Int, dezena_quatro: Int, dezena_cinco: Int, dezena_seis: Int, all_numbers: [Int], arrecadacao_total: String, ganhadores_sena: Int, cidade: String, uf: String, rateio_sena: String, ganhadores_quina: Int, rateio_quina: String, ganhadores_quadra: Int, rateio_quadra: String, acumulado: String, valor_acumulado: String, estimativa_premio: String, acumulado_mega_da_virada: String) {
+    init(id: Int, numberOfTheGame: Int, data_sorteio: String, dezena_um: Int, dezena_dois: Int, dezena_tres: Int, dezena_quatro: Int, dezena_cinco: Int, dezena_seis: Int, all_numbers: [Int], all_numbers_str: String, arrecadacao_total: String, ganhadores_sena: Int, cidade: String, uf: String, rateio_sena: String, ganhadores_quina: Int, rateio_quina: String, ganhadores_quadra: Int, rateio_quadra: String, acumulado: String, valor_acumulado: String, estimativa_premio: String, acumulado_mega_da_virada: String) {
         self.id = id
         self.numberOfTheGame = numberOfTheGame
         self.data_sorteio = data_sorteio
@@ -61,6 +45,7 @@ final class MegaSena: Codable {
         self.dezena_cinco = dezena_cinco
         self.dezena_seis = dezena_seis
         self.all_numbers = all_numbers
+        self.all_numbers_str = all_numbers_str
         self.arrecadacao_total = arrecadacao_total
         self.ganhadores_sena = ganhadores_sena
         self.cidade = cidade

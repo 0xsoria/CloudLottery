@@ -57,6 +57,7 @@ struct MegaSenaController: RouteCollection {
             game.dezena_cinco = updateGame.dezena_cinco
             game.dezena_seis = updateGame.dezena_seis
             game.all_numbers = updateGame.all_numbers
+            game.all_numbers_str = updateGame.all_numbers_str
             game.arrecadacao_total = updateGame.arrecadacao_total
             game.ganhadores_sena = updateGame.ganhadores_sena
             game.cidade = updateGame.cidade
@@ -69,7 +70,6 @@ struct MegaSenaController: RouteCollection {
             game.valor_acumulado = updateGame.valor_acumulado
             game.estimativa_premio = updateGame.estimativa_premio
             game.acumulado_mega_da_virada = updateGame.acumulado_mega_da_virada
-            game.allNumbersString = updateGame.allNumbersString
             
             return game.save(on: req)
         }
@@ -84,7 +84,7 @@ struct MegaSenaController: RouteCollection {
             throw Abort(.badRequest)
         }
         return MegaSena.query(on: req).group(.or) { or in
-            or.filter(\.allNumbersString == searchTerm)}.all()
+            or.filter(\.all_numbers_str == searchTerm)}.all()
     }
     
     func getFirstHandler(_ req: Request) throws -> Future<MegaSena> {

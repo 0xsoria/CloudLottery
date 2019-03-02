@@ -61,7 +61,8 @@ struct LotoFacilController: RouteCollection {
             game.bola_treze                             = updatedGame.bola_treze
             game.bola_catorze                           = updatedGame.bola_catorze
             game.bola_quinze                            = updatedGame.bola_quinze
-            game.allNumbers                             = updatedGame.allNumbers
+            game.all_numbers                            = updatedGame.all_numbers
+            game.all_numbers_str                        = updatedGame.all_numbers_str
             game.arrecadacao_total                      = updatedGame.arrecadacao_total
             game.ganhadores_quinze_numeros              = updatedGame.ganhadores_quinze_numeros
             game.cidade                                 = updatedGame.cidade
@@ -92,7 +93,7 @@ struct LotoFacilController: RouteCollection {
             throw Abort(.badRequest)
         }
         return LotoFacil.query(on: req).group(.or) { or in
-            or.filter(\.allNumbersString == searchTerm)}.all()
+            or.filter(\.all_numbers_str == searchTerm)}.all()
         }
     
     func getFirstHandler(_ req: Request) throws -> Future<LotoFacil> {

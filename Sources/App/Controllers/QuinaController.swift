@@ -55,7 +55,8 @@ struct QuinaController: RouteCollection {
                 game.dezena_tres = updateGame.dezena_tres
                 game.dezena_quatro = updateGame.dezena_quatro
                 game.dezena_cinco = updateGame.dezena_cinco
-                game.allNumbers = updateGame.allNumbers
+                game.all_numbers = updateGame.all_numbers
+                game.all_numbers_str = updateGame.all_numbers_str
                 game.arrecadacao_total = updateGame.arrecadacao_total
                 game.ganhadores_quina = updateGame.ganhadores_quina
                 game.cidade = updateGame.cidade
@@ -66,7 +67,6 @@ struct QuinaController: RouteCollection {
                 game.valor_acumulado = updateGame.valor_acumulado
                 game.estimativa_premio = updateGame.estimativa_premio
                 game.valor_acumulado_sorteio_especial_sao_joao = updateGame.valor_acumulado_sorteio_especial_sao_joao
-                game.allNumbersString = updateGame.allNumbersString
                 return game.save(on: req)
         }
     }
@@ -80,7 +80,7 @@ struct QuinaController: RouteCollection {
             throw Abort(.badRequest)
         }
         return Quina.query(on: req).group(.or) { or in
-            or.filter(\.allNumbersString == searchTerm)}.all()
+            or.filter(\.all_numbers_str == searchTerm)}.all()
     }
     
     func getFirstHandler(_ req: Request) throws -> Future<Quina> {

@@ -17,7 +17,8 @@ final class Quina: Codable {
     var dezena_tres: Int
     var dezena_quatro: Int
     var dezena_cinco: Int
-    var allNumbers: [Int]
+    var all_numbers: [Int]
+    var all_numbers_str: String
     var arrecadacao_total: String
     var ganhadores_quina: Int
     var cidade: String
@@ -33,23 +34,7 @@ final class Quina: Codable {
     var valor_acumulado: String
     var estimativa_premio: String
     var valor_acumulado_sorteio_especial_sao_joao: String
-    var allNumbersString: String {
-        get {
-            let sortedNumbers = allNumbers.sorted()
-            var stringAllNumbers = String()
-            for i in sortedNumbers {
-                if stringAllNumbers.isEmpty {
-                    stringAllNumbers.append(String(i))
-                } else {
-                    stringAllNumbers.append("-\(i)")
-                }
-            }
-            return stringAllNumbers
-        }
-        set {
-            print(newValue)
-        }
-    }
+
     init(id: Int,
          numberOfTheGame: Int,
          data_sorteio: String,
@@ -58,7 +43,8 @@ final class Quina: Codable {
          dezena_tres: Int,
          dezena_quatro: Int,
          dezena_cinco: Int,
-         allNumbers: [Int],
+         all_numbers: [Int],
+         all_numbers_str: String,
          arrecadacao_total: String,
          ganhadores_quina: Int,
          cidade: String,
@@ -83,7 +69,8 @@ final class Quina: Codable {
         self.dezena_tres = dezena_tres
         self.dezena_quatro = dezena_quatro
         self.dezena_cinco = dezena_cinco
-        self.allNumbers = allNumbers
+        self.all_numbers = all_numbers
+        self.all_numbers_str = all_numbers_str
         self.arrecadacao_total = arrecadacao_total
         self.ganhadores_quina = ganhadores_quina
         self.cidade = cidade

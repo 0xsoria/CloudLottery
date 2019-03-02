@@ -27,7 +27,8 @@ final class LotoFacil: Codable {
     var bola_treze: Int
     var bola_catorze: Int
     var bola_quinze: Int
-    var allNumbers: [Int]
+    var all_numbers: [Int]
+    var all_numbers_str: String
     var arrecadacao_total: String
     var ganhadores_quinze_numeros: Int
     var cidade: String
@@ -44,25 +45,8 @@ final class LotoFacil: Codable {
     var acumulado_quinze_numeros: String
     var estimativa_premio: String
     var valor_acumulado_especial: String
-    var allNumbersString: String {
-        get {
-            let sortedNumbers = allNumbers.sorted()
-            var stringAllNumbers = String()
-            for i in sortedNumbers {
-                if stringAllNumbers.isEmpty {
-                    stringAllNumbers.append(String(i))
-                } else {
-                    stringAllNumbers.append("-\(i)")
-                }
-            }
-            return stringAllNumbers
-        }
-        set {
-            print(newValue)
-        }
-    }
 
-    init(id: Int, numberOfTheGame: Int, data_sorteio: String, bola_um: Int, bola_dois: Int, bola_tres: Int, bola_quatro: Int, bola_cinco: Int, bola_seis: Int, bola_sete: Int, bola_oito: Int, bola_nove: Int, bola_dez: Int, bola_onze: Int, bola_doze: Int, bola_treze: Int, bola_catorze: Int, bola_quinze: Int, allNumbers: [Int], arrecadacao_total: String, ganhadores_quinze_numeros: Int, cidade: String, uf: String, ganhadores_catorze_numeros: Int, ganhadores_treze_numeros: Int, ganhadores_doze_numeros: Int, ganhadores_onze_numeros: Int, valor_rateio_quinze_numeros: String, valor_rateio_catorze_numeros: String, valor_rateio_treze_numeros: String, valor_rateio_doze_numeros: String, valor_rateio_onze_numeros: String, acumulado_quinze_numeros: String, estimativa_premio: String, valor_acumulado_especial: String) {
+    init(id: Int, numberOfTheGame: Int, data_sorteio: String, bola_um: Int, bola_dois: Int, bola_tres: Int, bola_quatro: Int, bola_cinco: Int, bola_seis: Int, bola_sete: Int, bola_oito: Int, bola_nove: Int, bola_dez: Int, bola_onze: Int, bola_doze: Int, bola_treze: Int, bola_catorze: Int, bola_quinze: Int, all_numbers: [Int], all_numbers_str: String, arrecadacao_total: String, ganhadores_quinze_numeros: Int, cidade: String, uf: String, ganhadores_catorze_numeros: Int, ganhadores_treze_numeros: Int, ganhadores_doze_numeros: Int, ganhadores_onze_numeros: Int, valor_rateio_quinze_numeros: String, valor_rateio_catorze_numeros: String, valor_rateio_treze_numeros: String, valor_rateio_doze_numeros: String, valor_rateio_onze_numeros: String, acumulado_quinze_numeros: String, estimativa_premio: String, valor_acumulado_especial: String) {
         
         self.id                                     = id
         self.numberOfTheGame                        = numberOfTheGame
@@ -82,7 +66,8 @@ final class LotoFacil: Codable {
         self.bola_treze                             = bola_treze
         self.bola_catorze                           = bola_catorze
         self.bola_quinze                            = bola_quinze
-        self.allNumbers                             = allNumbers
+        self.all_numbers                            = all_numbers
+        self.all_numbers_str                        = all_numbers_str
         self.arrecadacao_total                      = arrecadacao_total
         self.ganhadores_quinze_numeros              = ganhadores_quinze_numeros
         self.cidade                                 = cidade
