@@ -12,7 +12,7 @@ struct MegaSenaController: RouteCollection {
     
     func boot(router: Router) throws {
         
-        let megaSenaRouter = router.grouped("api", "sena")
+        let megaSenaRouter = router.grouped("api", "megasena")
         megaSenaRouter.get(use: getAllHandler)
         megaSenaRouter.post([MegaSena].self, use: createManyHandlers)
         //megaSenaRouter.post(MegaSena.self, use: createOneHandler)
