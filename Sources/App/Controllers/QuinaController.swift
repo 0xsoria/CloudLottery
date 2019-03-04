@@ -79,8 +79,12 @@ struct QuinaController: RouteCollection {
         guard let searchTerm = req.query[String.self, at: "term"] else {
             throw Abort(.badRequest)
         }
-        return Quina.query(on: req).group(.or) { or in
-            or.filter(\.all_numbers_str == searchTerm)}.all()
+        
+        let arrOfSearchTerms = searchTerm.components(separatedBy: CharacterSet(charactersIn: "-"))
+        let mappingSearchTermsToInt = arrOfSearchTerms.compactMap { Int($0) }
+        
+        return Quina.query(on: req).filter(\.all_numbers, .contains, mappingSearchTermsToInt).all()
+        
     }
     
     func getFirstHandler(_ req: Request) throws -> Future<Quina> {
