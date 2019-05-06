@@ -31,5 +31,8 @@ public func routes(_ router: Router) throws {
     let lotofacilStatisticsController = LotoFacilStatisticsController()
     try router.register(collection: lotofacilStatisticsController)
     
+    let analyticsController = AnalyticsController()
+    try router.register(collection: analyticsController)
+    
     
 }
