@@ -26,6 +26,7 @@ struct AnalyticsController: RouteCollection {
     }
     
     func getAllHandlers(_ req: Request) throws -> Future<[MyAnalytics]> {
+        
         return MyAnalytics.query(on: req).all()
     }
     
