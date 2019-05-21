@@ -42,7 +42,11 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     databases.add(database: database, as: .psql)
     services.register(databases)
     
-
+    var commandConfig = CommandConfig.default()
+    commandConfig.useFluentCommands()
+    services.register(commandConfig)
+    
+    
     // Configure migrations
     var migrations = MigrationConfig()
     migrations.add(model: MegaSena.self, database: .psql)
@@ -54,6 +58,15 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     migrations.add(model: LotoFacil.self, database: .psql)
     services.register(migrations)
     
+    migrations.add(model: LotoMania.self, database: .psql)
+    services.register(migrations)
+    
+    migrations.add(model: DuplaSena.self, database: .psql)
+    services.register(migrations)
+    
+    migrations.add(model: TimeMania.self, database: .psql)
+    services.register(migrations)
+    
     migrations.add(model: MegaSenaStatistics.self, database: .psql)
     services.register(migrations)
     
@@ -61,6 +74,18 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     services.register(migrations)
     
     migrations.add(model: LotoFacilStatistics.self, database: .psql)
+    services.register(migrations)
+    
+    migrations.add(model: LotoManiaStatistics.self, database: .psql)
+    services.register(migrations)
+    
+    migrations.add(model: DuplaSenaStatistics.self, database: .psql)
+    services.register(migrations)
+    
+    migrations.add(model: TimeManiaStatistics.self, database: .psql)
+    services.register(migrations)
+    
+    migrations.add(model: DiaDeSorteStatistics.self, database: .psql)
     services.register(migrations)
     
     migrations.add(model: MyAnalytics.self, database: .psql)

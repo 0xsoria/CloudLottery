@@ -22,6 +22,15 @@ public func routes(_ router: Router) throws {
     let lotofacilController = LotoFacilController()
     try router.register(collection: lotofacilController)
     
+    let lotomaniaController = LotoManiaController()
+    try router.register(collection: lotomaniaController)
+    
+    let duplasenaController = DuplaSenaController()
+    try router.register(collection: duplasenaController)
+    
+    let timemaniaController = TimeManiaController()
+    try router.register(collection: timemaniaController)
+    
     let megaSenaStatisticsController = MegaSenaStatisticsController()
     try router.register(collection: megaSenaStatisticsController)
     
@@ -30,6 +39,18 @@ public func routes(_ router: Router) throws {
     
     let lotofacilStatisticsController = LotoFacilStatisticsController()
     try router.register(collection: lotofacilStatisticsController)
+    
+    let lotomaniaStatisticsController = LotoManiaStatisticsController()
+    try router.register(collection: lotomaniaStatisticsController)
+    
+    let duplasenaStatisticsController = DuplaSenaStatisticsController()
+    try router.register(collection: duplasenaStatisticsController)
+    
+    let timemaniaStatisticsController = TimeManiaStatisticsController()
+    try router.register(collection: timemaniaStatisticsController)
+    
+    let diadesorteStatisticsController = DiaDeSorteStatisticsController()
+    try router.register(collection: diadesorteStatisticsController)
     
     let analyticsController = AnalyticsController()
     try router.register(collection: analyticsController)

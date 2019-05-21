@@ -14,7 +14,7 @@ struct QuinaStatisticsController: RouteCollection {
         let quina = router.grouped("api", "estatisticas", "quina")
         quina.get(use: getAllHandler)
         quina.post(QuinaStatistics.self, use: createOneHandler)
-        //quina.delete(QuinaStatistics.parameter, use: deleteHandler)
+        quina.delete(QuinaStatistics.parameter, use: deleteHandler)
     }
     
     func createOneHandler(_ req: Request, stats: QuinaStatistics) throws -> Future<QuinaStatistics> {

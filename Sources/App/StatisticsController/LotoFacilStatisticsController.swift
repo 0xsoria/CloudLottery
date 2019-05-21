@@ -15,7 +15,7 @@ struct LotoFacilStatisticsController: RouteCollection {
         let loto = router.grouped("api", "estatisticas", "lotofacil")
         loto.get(use: getAllHandler)
         loto.post(LotoFacilStatistics.self, use: createOneHandler)
-        //loto.delete(LotoFacilStatistics.parameter, use: deleteHandler)
+        loto.delete(LotoFacilStatistics.parameter, use: deleteHandler)
         
     }
     
