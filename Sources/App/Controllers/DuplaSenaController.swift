@@ -49,14 +49,13 @@ struct DuplaSenaController: RouteCollection {
         guard let searchTerm = req.query[String.self, at: "term"] else {
             throw Abort(.badRequest)
         }
+        
         let arrOfSearchTerms = searchTerm.components(separatedBy: CharacterSet(charactersIn: "-"))
         let mappingSearchTermsToInt = arrOfSearchTerms.compactMap { Int($0) }
         
-        
         return DuplaSena.query(on: req).group(.or) { and in
             and.filter(\.all_Numbers, .contains, mappingSearchTermsToInt)
-            and.filter(\.all_Numbers_dois, .contains, mappingSearchTermsToInt)
-        }.all()
+            }.all()
     }
     
     func getFirstHandler(_ req: Request) throws -> Future<DuplaSena> {
