@@ -3,6 +3,7 @@ import FluentPostgreSQL
 
 final class LotoManiaStatistics: Codable {
     var id: Int?
+    var zero: Int
     var one: Int
     var two: Int
     var three: Int
@@ -105,7 +106,7 @@ final class LotoManiaStatistics: Codable {
     var hundred: Int
     
     
-    init(one: Int, two: Int, three: Int, four: Int, five: Int, six: Int, seven: Int, eight: Int, nine: Int, tem: Int, eleven: Int, twelve: Int, thirteen: Int, fourteen: Int, fifteen: Int, sixteen: Int, seventeen: Int, eighteen: Int, nineeen: Int, twenty: Int, twenty_one: Int, twenty_two: Int, twenty_three: Int, twenty_four: Int, twenty_five: Int, twenty_six: Int, twenty_seven: Int, twenty_eight: Int, twenty_nine: Int, thirdy: Int, thirdy_one: Int, thirdy_two: Int, thirdy_three: Int, thirdy_four: Int, thirdy_five: Int, thirdy_six: Int, thirdy_seven: Int, thirdy_eight: Int, thirdy_nine: Int, forty: Int, forty_one: Int, forty_two: Int, forty_three: Int, forty_four: Int, forty_five: Int, forty_six: Int, forty_seven: Int, forty_eight: Int, forty_nine: Int, fifty: Int, fifty_one: Int, fifty_two: Int, fifty_three: Int, fifty_four: Int, fifty_five: Int, fifty_six: Int, fifty_seven: Int, fifty_eight: Int, fifty_nine: Int, sixty: Int, sixty_one: Int, sixty_two: Int, sixty_three: Int, sixty_four: Int, sixty_five: Int, sixty_six: Int, sixty_seven: Int, sixty_eight: Int, sixty_nine: Int, seventy: Int, seventy_one: Int, seventy_two: Int, seventy_three: Int, seventy_four: Int, seventy_five: Int, seventy_six: Int, seventy_seven: Int, seventy_eight: Int, seventy_nine: Int, eighty: Int,
+    init(zero: Int, one: Int, two: Int, three: Int, four: Int, five: Int, six: Int, seven: Int, eight: Int, nine: Int, tem: Int, eleven: Int, twelve: Int, thirteen: Int, fourteen: Int, fifteen: Int, sixteen: Int, seventeen: Int, eighteen: Int, nineeen: Int, twenty: Int, twenty_one: Int, twenty_two: Int, twenty_three: Int, twenty_four: Int, twenty_five: Int, twenty_six: Int, twenty_seven: Int, twenty_eight: Int, twenty_nine: Int, thirdy: Int, thirdy_one: Int, thirdy_two: Int, thirdy_three: Int, thirdy_four: Int, thirdy_five: Int, thirdy_six: Int, thirdy_seven: Int, thirdy_eight: Int, thirdy_nine: Int, forty: Int, forty_one: Int, forty_two: Int, forty_three: Int, forty_four: Int, forty_five: Int, forty_six: Int, forty_seven: Int, forty_eight: Int, forty_nine: Int, fifty: Int, fifty_one: Int, fifty_two: Int, fifty_three: Int, fifty_four: Int, fifty_five: Int, fifty_six: Int, fifty_seven: Int, fifty_eight: Int, fifty_nine: Int, sixty: Int, sixty_one: Int, sixty_two: Int, sixty_three: Int, sixty_four: Int, sixty_five: Int, sixty_six: Int, sixty_seven: Int, sixty_eight: Int, sixty_nine: Int, seventy: Int, seventy_one: Int, seventy_two: Int, seventy_three: Int, seventy_four: Int, seventy_five: Int, seventy_six: Int, seventy_seven: Int, seventy_eight: Int, seventy_nine: Int, eighty: Int,
          eighty_one                 : Int,
          eighty_two                  : Int,
          eighty_three                : Int,
@@ -127,6 +128,7 @@ final class LotoManiaStatistics: Codable {
          ninety_nine                : Int,
          hundred                    : Int
         ) {
+        self.zero = zero
         self.one = one
         self.two = two
         self.three = three
