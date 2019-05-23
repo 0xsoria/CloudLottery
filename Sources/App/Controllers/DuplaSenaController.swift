@@ -53,7 +53,7 @@ struct DuplaSenaController: RouteCollection {
         let mappingSearchTermsToInt = arrOfSearchTerms.compactMap { Int($0) }
         
         
-        return DuplaSena.query(on: req).group(.and) { and in
+        return DuplaSena.query(on: req).group(.or) { and in
             and.filter(\.all_Numbers, .contains, mappingSearchTermsToInt)
             and.filter(\.all_Numbers_dois, .contains, mappingSearchTermsToInt)
         }.all()
