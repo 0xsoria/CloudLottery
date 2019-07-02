@@ -13,8 +13,8 @@ struct LotoManiaStatisticsController: RouteCollection {
     func boot(router: Router) throws {
         let loto = router.grouped("api", "estatisticas", "lotomania")
         loto.get(use: getAllHandler)
-        loto.post(LotoManiaStatistics.self, use: createOneHandler)
-        loto.delete(LotoManiaStatistics.parameter, use: deleteHandler)
+        //loto.post(LotoManiaStatistics.self, use: createOneHandler)
+        //loto.delete(LotoManiaStatistics.parameter, use: deleteHandler)
     }
     
     func createOneHandler(_ req: Request, stats: LotoManiaStatistics) throws -> Future<LotoManiaStatistics> {
