@@ -1,28 +1,33 @@
+//
+//  QuinaStatisticsController.swift
+//  App
+//
+//  Created by Gabriel Soria Souza on 02/03/19.
+//
+
 import Vapor
 import Fluent
 
-struct MegaSenaStatisticsController: RouteCollection {
+struct QuinaStatisticsController: RouteCollection {
     func boot(router: Router) throws {
         
-        let senaStatisticsRouter = router.grouped("api", "estatisticas", "megasena")
-        senaStatisticsRouter.get(use: getAllHandler)
-        senaStatisticsRouter.post(MegaSenaStatistics.self, use: createOneHandler)
-        senaStatisticsRouter.delete(MegaSenaStatistics.parameter, use: deleteHandler)
+        let quina = router.grouped("api", "estatisticas", "quina")
+        quina.get(use: getAllHandler)
+        //quina.post(QuinaStatistics.self, use: createOneHandler)
+        //quina.delete(QuinaStatistics.parameter, use: deleteHandler)
     }
     
-    func createOneHandler(_ req: Request, stats: MegaSenaStatistics) throws -> Future<MegaSenaStatistics> {
+    func createOneHandler(_ req: Request, stats: QuinaStatistics) throws -> Future<QuinaStatistics> {
         return stats.save(on: req)
     }
     
-    func getHandler(_ req: Request) throws -> Future<MegaSenaStatistics> {
-        return try req.parameters.next(MegaSenaStatistics.self)
+    func getHandler(_ req: Request) throws -> Future<QuinaStatistics> {
+        return try req.parameters.next(QuinaStatistics.self)
     }
     
-    func updateHandler(_ req: Request) throws -> Future<MegaSenaStatistics> {
-        return try flatMap(to: MegaSenaStatistics.self,
-        req.parameters.next(MegaSenaStatistics.self),
-        req.content.decode(MegaSenaStatistics.self)) { stat, updatedStat in
-
+    func updateHandler(_ req: Request) throws -> Future<QuinaStatistics> {
+        return try flatMap(to: QuinaStatistics.self, req.parameters.next(QuinaStatistics.self), req.content.decode(QuinaStatistics.self)) { stat, updatedStat in
+            
             stat.one                =      updatedStat.one
             stat.two                =      updatedStat.two
             stat.three              =      updatedStat.three
@@ -82,17 +87,37 @@ struct MegaSenaStatisticsController: RouteCollection {
             stat.fifty_seven        =      updatedStat.fifty_seven
             stat.fifty_eight        =      updatedStat.fifty_eight
             stat.fifty_nine         =      updatedStat.fifty_nine
-            stat.sixty              =      updatedStat.sixty          
+            stat.sixty              =      updatedStat.sixty
+            stat.sixty_one          =      updatedStat.sixty_one
+            stat.sixty_two          =      updatedStat.sixty_two
+            stat.sixty_three        =      updatedStat.sixty_three
+            stat.sixty_four         =      updatedStat.sixty_four
+            stat.sixty_five         =      updatedStat.sixty_five
+            stat.sixty_six          =      updatedStat.sixty_six
+            stat.sixty_seven        =      updatedStat.sixty_seven
+            stat.sixty_eight        =      updatedStat.sixty_eight
+            stat.sixty_nine         =      updatedStat.sixty_nine
+            stat.seventy            =      updatedStat.seventy
+            stat.seventy_one        =      updatedStat.seventy_one
+            stat.seventy_two        =      updatedStat.seventy_two
+            stat.seventy_three      =      updatedStat.seventy_three
+            stat.seventy_four       =      updatedStat.seventy_four
+            stat.seventy_five       =      updatedStat.seventy_five
+            stat.seventy_six        =      updatedStat.seventy_six
+            stat.seventy_seven      =      updatedStat.seventy_seven
+            stat.seventy_eight      =      updatedStat.seventy_eight
+            stat.seventy_nine       =      updatedStat.seventy_nine
+            stat.eighty             =      updatedStat.eighty
             
-            return stat.save(on: req)
+           return stat.save(on: req)
         }
     }
     
-    func getAllHandler(_ req: Request) throws -> Future<[MegaSenaStatistics]> {
-        return MegaSenaStatistics.query(on: req).all()
+    func getAllHandler(_ req: Request) throws -> Future<[QuinaStatistics]> {
+        return QuinaStatistics.query(on: req).all()
     }
     
     func deleteHandler(_ req: Request) throws -> Future<HTTPStatus> {
-        return try req.parameters.next(MegaSenaStatistics.self).delete(on: req).transform(to: HTTPStatus.noContent)
+        return try req.parameters.next(QuinaStatistics.self).delete(on: req).transform(to: HTTPStatus.noContent)
     }
 }

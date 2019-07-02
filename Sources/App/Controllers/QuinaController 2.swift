@@ -14,8 +14,8 @@ struct QuinaController: RouteCollection {
         
         let quinaRouter = router.grouped("api", "quina")
         quinaRouter.get(use: getAllHandler)
-        quinaRouter.post([Quina].self, use: createManyHandlers)
-        quinaRouter.post(Quina.self, use: createOneHandler)
+        //quinaRouter.post([Quina].self, use: createManyHandlers)
+        //quinaRouter.post(Quina.self, use: createOneHandler)
         quinaRouter.get(Quina.parameter, use: getHandler)
         //quinaRouter.put(Quina.parameter, use: updateHandler)
         //quinaRouter.delete(Quina.parameter, use: deleteHandler)
@@ -34,9 +34,9 @@ struct QuinaController: RouteCollection {
         return arr.flatten(on: req).transform(to: .created)
     }
     
-    func createOneHandler(_ req: Request, game: Quina) throws -> Future<Quina> {
-        return game.save(on: req)
-    }
+//    func createOneHandler(_ req: Request, game: Quina) throws -> Future<Quina> {
+//        return game.save(on: req)
+//    }
     
     
     func getHandler(_ req: Request) throws -> Future<Quina> {
