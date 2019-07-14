@@ -13,7 +13,7 @@ struct LotoManiaController: RouteCollection {
     func boot(router: Router) throws {
         let mania = router.grouped("api", "lotomania")
         mania.get(use: getAllHandler)
-        //mania.post([LotoMania].self, use: createManyHandlers)
+        mania.post([LotoMania].self, use: createManyHandlers)
         //mania.post(LotoMania.self, use: createOneHandler)
         mania.get(LotoMania.parameter, use: getHandler)
         //mania.delete(LotoMania.parameter, use: deleteHandler)
