@@ -6,8 +6,8 @@ struct MegaSenaStatisticsController: RouteCollection {
         
         let senaStatisticsRouter = router.grouped("api", "estatisticas", "megasena")
         senaStatisticsRouter.get(use: getAllHandler)
-        senaStatisticsRouter.post(MegaSenaStatistics.self, use: createOneHandler)
-        senaStatisticsRouter.delete(MegaSenaStatistics.parameter, use: deleteHandler)
+        //senaStatisticsRouter.post(MegaSenaStatistics.self, use: createOneHandler)
+        //senaStatisticsRouter.delete(MegaSenaStatistics.parameter, use: deleteHandler)
     }
     
     func createOneHandler(_ req: Request, stats: MegaSenaStatistics) throws -> Future<MegaSenaStatistics> {
