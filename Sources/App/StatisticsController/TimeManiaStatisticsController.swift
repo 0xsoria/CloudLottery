@@ -13,8 +13,8 @@ struct TimeManiaStatisticsController: RouteCollection {
     func boot(router: Router) throws {
         let time = router.grouped("api", "estatisticas", "timemania")
         time.get(use: getAllHandler)
-        //time.post(TimeManiaStatistics.self, use: createOneHandler)
-        //time.delete(TimeManiaStatistics.parameter, use: deleteHandler)
+        time.post(TimeManiaStatistics.self, use: createOneHandler)
+        time.delete(TimeManiaStatistics.parameter, use: deleteHandler)
     }
     
     func createOneHandler(_ req: Request, stats: TimeManiaStatistics) throws -> Future<TimeManiaStatistics> {
