@@ -16,11 +16,11 @@ struct MegaSenaController: RouteCollection {
         
         let megaSenaRouter = router.grouped("api", "megasena")
         megaSenaRouter.get(use: getAllHandler)
-        megaSenaRouter.post([MegaSena].self, use: createManyHandlers)
+        //megaSenaRouter.post([MegaSena].self, use: createManyHandlers)
         //megaSenaRouter.post(MegaSena.self, use: createOneHandler)
         megaSenaRouter.get(MegaSena.parameter, use: getHandler)
         //megaSenaRouter.put(MegaSena.parameter, use: updateHandler)
-        megaSenaRouter.delete(MegaSena.parameter, use: deleteHandler)
+        //megaSenaRouter.delete(MegaSena.parameter, use: deleteHandler)
         megaSenaRouter.get("search", use: searchHandler)
         megaSenaRouter.get("first", use: getFirstHandler)
         megaSenaRouter.get("sorted", use: sortedHandler)

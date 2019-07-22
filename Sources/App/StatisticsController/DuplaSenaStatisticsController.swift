@@ -14,8 +14,8 @@ struct DuplaSenaStatisticsController: RouteCollection {
     func boot(router: Router) throws {
         let dupla = router.grouped("api", "estatisticas", "duplasena")
         dupla.get(use: getAllHandler)
-        dupla.post(DuplaSenaStatistics.self, use: createOneHandler)
-        dupla.delete(DuplaSenaStatistics.parameter, use: deleteHandler)
+        //dupla.post(DuplaSenaStatistics.self, use: createOneHandler)
+        //dupla.delete(DuplaSenaStatistics.parameter, use: deleteHandler)
     }
     
     func createOneHandler(_ req: Request, stats: DuplaSenaStatistics) throws -> Future<DuplaSenaStatistics> {
