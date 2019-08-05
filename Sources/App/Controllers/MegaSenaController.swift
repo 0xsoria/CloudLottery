@@ -16,15 +16,30 @@ struct MegaSenaController: RouteCollection {
         
         let megaSenaRouter = router.grouped("api", "megasena")
         megaSenaRouter.get(use: getAllHandler)
-        //megaSenaRouter.post([MegaSena].self, use: createManyHandlers)
+        megaSenaRouter.post([MegaSena].self, use: createManyHandlers)
         //megaSenaRouter.post(MegaSena.self, use: createOneHandler)
         megaSenaRouter.get(MegaSena.parameter, use: getHandler)
         //megaSenaRouter.put(MegaSena.parameter, use: updateHandler)
-        //megaSenaRouter.delete(MegaSena.parameter, use: deleteHandler)
+        megaSenaRouter.delete(MegaSena.parameter, use: deleteHandler)
         megaSenaRouter.get("search", use: searchHandler)
         megaSenaRouter.get("first", use: getFirstHandler)
         megaSenaRouter.get("sorted", use: sortedHandler)
+        //megaSenaRouter.get("update", use: updateGames)
     }
+    
+//    func updateGames(_ req: Request) throws -> EventLoopFuture<Response> {
+//        let res = try! req.client().get("https://confiraloterias.com.br/api0/json.php?loteria=megasena&token=MkQyfFEFODgk3A3")
+//
+//        let response = res.flatMap {
+//            try! $0.content.decode(SenaConcourseData.self)
+//        }
+//
+//
+//
+//
+//        return res
+//
+//    }
     
     func createManyHandlers(_ req: Request, games: [MegaSena]) throws -> Future<HTTPStatus> {
         var arr: [EventLoopFuture<MegaSena>] = []
