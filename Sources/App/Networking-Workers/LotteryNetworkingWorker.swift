@@ -56,8 +56,8 @@ extension LotteryNetworkingWorker: Equatable {
         lhs.duplaSenaSecondSetOfNumbers == rhs.duplaSenaSecondSetOfNumbers &&
         lhs.teamOrDay == rhs.teamOrDay &&
         lhs.duplaSenaTeamOrDayPrize == rhs.duplaSenaTeamOrDayPrize &&
-        lhs.duplaSenaTeamOrDayWinners == rhs.duplaSenaTeamOrDayWinners &&
-        lhs.federalPrize == rhs.federalPrize
+        lhs.duplaSenaTeamOrDayWinners == rhs.duplaSenaTeamOrDayWinners 
+        //lhs.federalPrize == rhs.federalPrize
     }
     
     

@@ -39,16 +39,16 @@ struct FederalPrizeDetail: Codable {
     let valor_pago: String
 }
 
-extension FederalPrize: Equatable {
-    public static func == (lhs: FederalPrize, rhs: FederalPrize) -> Bool {
-        return lhs.premio_1 == rhs.premio_1 &&
-        lhs.premio_2 == rhs.premio_2 &&
-        lhs.premio_3 == rhs.premio_3 &&
-        lhs.premio_4 ==  rhs.premio_4 &&
-        lhs.premio_5 == rhs.premio_5
-    }
-}
-
-extension FederalPrizeDetail: Equatable {
-    
-}
+//extension FederalPrize: Equatable {
+//    public static func == (lhs: FederalPrize, rhs: FederalPrize) -> Bool {
+//        return lhs.premio_1 == rhs.premio_1 &&
+//        lhs.premio_2 == rhs.premio_2 &&
+//        lhs.premio_3 == rhs.premio_3 &&
+//        lhs.premio_4 ==  rhs.premio_4 &&
+//        lhs.premio_5 == rhs.premio_5
+//    }
+//}
+//
+//extension FederalPrizeDetail: Equatable {
+//    
+//}
