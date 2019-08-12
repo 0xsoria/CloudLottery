@@ -16,11 +16,11 @@ struct MegaSenaController: RouteCollection {
         
         let megaSenaRouter = router.grouped("api", "megasena")
         megaSenaRouter.get(use: getAllHandler)
-        //megaSenaRouter.post([MegaSena].self, use: createManyHandlers)
+        megaSenaRouter.post([MegaSena].self, use: createManyHandlers)
         //megaSenaRouter.post(MegaSena.self, use: createOneHandler)
         megaSenaRouter.get(MegaSena.parameter, use: getHandler)
         //megaSenaRouter.put(MegaSena.parameter, use: updateHandler)
-        //megaSenaRouter.delete(MegaSena.parameter, use: deleteHandler)
+        megaSenaRouter.delete(MegaSena.parameter, use: deleteHandler)
         megaSenaRouter.get("search", use: searchHandler)
         megaSenaRouter.get("first", use: getFirstHandler)
         megaSenaRouter.get("sorted", use: sortedHandler)
@@ -33,7 +33,13 @@ struct MegaSenaController: RouteCollection {
 //        let response = res.flatMap {
 //            try! $0.content.decode(SenaConcourseData.self)
 //        }
-//
+//        
+//        let oi = response.map {
+//            let oii = LotteryNetworkingWorker(lotteryGameString: "megasena", lotteryGame: .megasena, lotteryGameNoSpace: .megasena, concourseNumber: $0.concurso.numero, numbers: $0.concurso.dezenas, date: $0.concurso.data, accumulatedValue: $0.concurso.valor_acumulado, prize: $0.concurso.premiacao.sena.valor_pago, winners: $0.concurso.premiacao.sena.ganhadores, duplaSenaSecondSetOfNumbers: nil, teamOrDay: nil, duplaSenaTeamOrDayPrize: nil, duplaSenaTeamOrDayWinners: nil, federalPrize: nil)
+//            let ooo = req.future(oii)
+//            
+//        }
+//        
 //
 //
 //

@@ -13,8 +13,8 @@ struct DiaDeSorteStatisticsController: RouteCollection {
     func boot(router: Router) throws {
         let dia = router.grouped("api", "estatisticas", "diadesorte")
         dia.get(use: getAllHandler)
-        //dia.post(DiaDeSorteStatistics.self, use: createOneHandler)
-        //dia.delete(DiaDeSorteStatistics.parameter, use: deleteHandler)
+        dia.post(DiaDeSorteStatistics.self, use: createOneHandler)
+        dia.delete(DiaDeSorteStatistics.parameter, use: deleteHandler)
     }
     
     func createOneHandler(_ req: Request, stats: DiaDeSorteStatistics) throws -> Future<DiaDeSorteStatistics> {
