@@ -15,7 +15,7 @@ struct AnalyticsController: RouteCollection {
     func boot(router: Router) throws {
         let analyticsRouter = router.grouped("analytics")
         //analyticsRouter.get(use: getHandler)
-        analyticsRouter.get(use: getAllHandlers)
+        //analyticsRouter.get(use: getAllHandlers)
         analyticsRouter.post(MyAnalytics.self, use: create)
         //analyticsRouter.get("search", use: searchHandler)
         //analyticsRouter.get("sorted", use: sortedHandlers)
