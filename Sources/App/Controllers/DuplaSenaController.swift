@@ -15,8 +15,8 @@ struct DuplaSenaController: RouteCollection {
     func boot(router: Router) throws {
         let dupla = router.grouped("api", "duplasena")
         dupla.get(use: getAllHandler)
-        //dupla.post([DuplaSena].self, use: createManyHandlers)
-        //dupla.post(DuplaSena.self, use: createOneHandler)
+        dupla.post([DuplaSena].self, use: createManyHandlers)
+        dupla.post(DuplaSena.self, use: createOneHandler)
         dupla.get(DuplaSena.parameter, use: getHandler)
         dupla.delete(DuplaSena.parameter, use: deleteHandler)
         dupla.get("search", use: searchHandler)
