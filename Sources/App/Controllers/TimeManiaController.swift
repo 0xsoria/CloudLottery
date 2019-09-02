@@ -17,7 +17,7 @@ struct TimeManiaController: RouteCollection {
         let time = router.grouped("api", "timemania")
         time.get(use: getAllHandler)
         time.post([TimeMania].self, use: createManyHandlers)
-        time.post(TimeMania.self, use: createOneHandler)
+        //time.post(TimeMania.self, use: createOneHandler)
         time.get(TimeMania.parameter, use: getHandler)
         time.delete(TimeMania.parameter, use: deleteHandler)
         time.get("search", use: searchHandler)

@@ -15,7 +15,7 @@ struct QuinaController: RouteCollection {
         let quinaRouter = router.grouped("api", "quina")
         quinaRouter.get(use: getAllHandler)
         quinaRouter.post([Quina].self, use: createManyHandlers)
-        quinaRouter.post(Quina.self, use: createOneHandler)
+        //quinaRouter.post(Quina.self, use: createOneHandler)
         quinaRouter.get(Quina.parameter, use: getHandler)
         quinaRouter.put(Quina.parameter, use: updateHandler)
         quinaRouter.delete(Quina.parameter, use: deleteHandler)

@@ -14,7 +14,7 @@ struct LotoFacilController: RouteCollection {
         let lotofacilRouter = router.grouped("api", "lotofacil")
         lotofacilRouter.get(use: getAllHandler)
         lotofacilRouter.post([LotoFacil].self, use: createManyHandlers)
-        lotofacilRouter.post(LotoFacil.self, use: createOneHandler)
+        //lotofacilRouter.post(LotoFacil.self, use: createOneHandler)
         lotofacilRouter.get(LotoFacil.parameter, use: getHandler)
         lotofacilRouter.put(LotoFacil.parameter, use: updateHandler)
         lotofacilRouter.delete(LotoFacil.parameter, use: deleteHandler)
