@@ -55,5 +55,7 @@ public func routes(_ router: Router) throws {
     let analyticsController = AnalyticsController()
     try router.register(collection: analyticsController)
     
+    let newAnalyticsController = NewAnalyticsController()
+    try router.register(collection: newAnalyticsController)
     
 }
